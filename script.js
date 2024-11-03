@@ -1,6 +1,6 @@
 const nav = document.querySelector('#main');
 const headone = document.querySelector('h1');
-const all = document.querySelectorAll('*');
+const all = document.querySelectorAll('*:not(html, html > head, html > body)');
 const dark = document.querySelector('#dark');
 const light = document.querySelector('#light');
 
@@ -18,10 +18,9 @@ let topOfNav = nav.offsetTop;
     
     function darked(){
       for (let i = 0; i < all.length; i++) {
-        all[i].style.background = 'black';
+        all[i].style.background= 'black';
         all[i].style.color = 'white';
       }
-      document.body.style.backgroundColor = ' #eeeeee';
       headone.style.textShadow = '3px 4px 0 rgba(255, 255, 255, 0.5)';
     }
     
@@ -30,7 +29,6 @@ let topOfNav = nav.offsetTop;
         all[i].style.background = 'white';
         all[i].style.color = 'black';
       }
-      document.body.style.backgroundColor = ' #eeeeee';
       headone.style.textShadow = '3px 4px 0 rgba(0, 0, 0, 0.2)';
     }
     
