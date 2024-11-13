@@ -25,6 +25,7 @@ body {
     align-items: center;
     transform: scale(0.98);
     transition: transform 0.5s;
+    flex-wrap: wrap;
 }
 
 body.fixed-nav .site-wrap {
@@ -67,6 +68,7 @@ nav ul {
     padding: 0;
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
 }
 
 nav li {
