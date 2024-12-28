@@ -4,7 +4,13 @@ const all = document.querySelectorAll('*:not(html, html > head, html > body)');
 const dark = document.querySelector('#dark');
 const light = document.querySelector('#light');
 
-let topOfNav = nav.offsetTop;
+const topOfNav = nav.offsetTop;
+const navHeight = nav.offsetHeight;
+
+document.documentElement.style.setProperty(
+  "--scroll-padding",
+  navHeight + "px"
+);
 
     function fixNav() {
       if (window.scrollY >= topOfNav) {
