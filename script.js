@@ -12,8 +12,8 @@ document.documentElement.style.setProperty(
   navHeight + "px"
 );
 
-    function fixNav() {
-      if (window.scrollY >= topOfNav) {
+function fixNav() {
+  if (window.scrollY >= topOfNav) {
         document.body.style.paddingTop = nav.offsetHeight + 'px';
         document.body.classList.add('fixed-nav');
       } else {
@@ -24,10 +24,11 @@ document.documentElement.style.setProperty(
     
     function darked(){
       for (let i = 0; i < all.length; i++) {
-        all[i].style.background= 'black';
+        all[i].style.background = 'black';
         all[i].style.color = 'white';
       }
       headone.style.textShadow = '3px 4px 0 rgba(255, 255, 255, 0.5)';
+      console.log('dark');
     }
     
     function lighted(){
@@ -36,8 +37,44 @@ document.documentElement.style.setProperty(
         all[i].style.color = 'black';
       }
       headone.style.textShadow = '3px 4px 0 rgba(0, 0, 0, 0.2)';
+      console.log('light');
     }
     
+    function setColorScheme(scheme) {
+      switch(scheme){
+        case 'dark':
+          console.log('dark');
+          break;
+        case 'light':
+          console.log('light');
+          break;
+        default:
+          console.log('default');
+          break;
+      }
+    }
+    
+    function getPreferredColorScheme() {
+      if (window.matchMedia) {
+        if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+          return 'dark';
+        } else {
+          return 'light';
+        }
+      }
+      return 'light';
+    }
+    
+    function updateColorScheme(){
+        setColorScheme(getPreferredColorScheme());
+    }
+    
+    if(window.matchMedia){
+      let colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      colorSchemeQuery.addEventListener('change', updateColorScheme);
+    }
+    
+    updateColorScheme();
     window.addEventListener('scroll', fixNav);
     dark.addEventListener('click', darked);
     light.addEventListener('click', lighted);
